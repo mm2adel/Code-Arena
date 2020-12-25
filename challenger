@@ -1,0 +1,43 @@
+// This function builds the regular expression or Secret-Key
+function regexGenerator(mVal,sVal,nVal){
+    var regSpecial = '!@#$%^&*()_-+='
+    for (var i=0; i < regSpecial.length; i++)
+    {
+        mVal = mVal.replace(regSpecial[i],'\\'+regSpecial[i]);
+        sVal = sVal.replace(regSpecial[i],'\\'+regSpecial[i])        
+        nVal = nVal.replace(regSpecial[i],'\\'+regSpecial[i])    
+    }
+    
+    var regex4ga = '(.*)['+sVal+'](.*)['+mVal+'](.*)['+nVal+']|['+sVal+'](.*)['+nVal+'](.*)['+mVal+']|['+mVal+'](.*)['+sVal+'](.*)['+nVal+']|['+mVal+'](.*)['+nVal+'](.*)['+sVal+']|['+nVal+'](.*)['+sVal+'](.*)['+mVal+']|['+nVal+'](.*)['+mVal+'](.*)['+sVal+'](.*)';
+    return regex4ga;
+}
+
+// This function generates the Secret-Word
+function createSecretWord(mVal,sVal,nVal)
+{
+var originalPass = '';
+var allChars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+'.replace(mVal,'').replace(sVal,'').replace(nVal,'')
+
+for ( var i = 0; i < 16; i++ ) {
+    originalPass += allChars.charAt(Math.floor(Math.random() *  allChars.length));
+}
+
+// now select a random slot of the created pass-key to replace with the keys
+var f1 = Math.floor(Math.random() * 15);        
+var f2 = Math.floor(Math.random() * 15);
+f2 = checkExistance(f1,f2)
+var f3 = Math.floor(Math.random() * 15);
+f3 = checkExistance2(f1,f2,f3)
+
+function checkExistance(f1,f2)
+{f2 = (f1==f2) ? Math.floor(Math.random() * 15) : f2; return (f1==f2) ? checkExistance(f1,f2) : f2}
+
+function checkExistance2(f1,f2,f3)
+{f3 = (f1==f3 || f2==f3) ? Math.floor(Math.random() * 15) : f3; return (f1==f3 || f2==f3) ? checkExistance(f1,f2,f3) : f3}
+
+originalPass = originalPass.substr(0, f1) + mVal + originalPass.substr(f1 + mVal.length);
+originalPass = originalPass.substr(0, f2) + sVal + originalPass.substr(f2 + sVal.length);
+originalPass = originalPass.substr(0, f3) + nVal + originalPass.substr(f3 + nVal.length);
+return originalPass
+
+}
