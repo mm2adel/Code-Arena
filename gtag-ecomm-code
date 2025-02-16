@@ -1,0 +1,238 @@
+gtag('event', 'view_item_list', {
+    currency: 'USD', // Replace with your currency code (e.g., 'USD', 'EUR')
+    item_list_name: 'Summer Sale', // Optional: Name of the list (e.g., 'Summer Sale', 'Search Results')
+    item_list_id: 'summer_sale_2023', // Optional: ID of the list
+    items: [
+      {
+        item_id: '12345', // Product ID (e.g., SKU)
+        item_name: 'T-Shirt', // Product name
+        currency: 'USD',
+        price: 15.99,
+        item_brand: 'Brand A', // Optional
+        item_category: 'Apparel', // Optional
+        item_category2: 'T-Shirts', // Optional subcategories
+        item_variant: 'Blue', // Optional variant (e.g., color, size)
+        item_list_name: 'Summer Sale', // Optional: List name
+        index: 1 // Position in the list
+      },
+      {
+        item_id: '67890',
+        item_name: 'Sneakers',
+        currency: 'USD',
+        price: 49.99,
+        item_brand: 'Brand B',
+        item_category: 'Footwear',
+        item_variant: 'Red',
+        item_list_name: 'Summer Sale',
+        index: 2
+      }
+      // Add more products as needed
+    ]
+  });
+
+
+  gtag('event', 'select_item', {
+    currency: 'USD', // Replace with your currency code (e.g., 'USD', 'EUR')
+    item_list_name: 'Summer Sale', // Optional: Name of the list (e.g., 'Summer Sale', 'Search Results')
+    item_list_id: 'summer_sale_2023', // Optional: ID of the list
+    items: [
+      {
+        item_id: '12345', // Product ID (e.g., SKU)
+        item_name: 'T-Shirt', // Product name
+        currency: 'USD',
+        price: 15.99,
+        item_brand: 'Brand A', // Optional
+        item_category: 'Apparel', // Optional
+        item_category2: 'T-Shirts', // Optional subcategories
+        item_variant: 'Blue', // Optional variant (e.g., color, size)
+        index: 1 // Position in the list
+      }
+    ]
+  });
+
+
+  gtag('event', 'view_item', {
+    currency: 'USD', // Replace with your currency code (e.g., 'USD', 'EUR')
+    item_list_name: 'Summer Sale', // Optional: Name of the list (e.g., 'Summer Sale', 'Search Results')
+    item_list_id: 'summer_sale_2023', // Optional: ID of the list
+    items: [
+      {
+        item_id: '12345', // Product ID (e.g., SKU)
+        item_name: 'T-Shirt', // Product name
+        currency: 'USD',
+        price: 15.99,
+        item_brand: 'Brand A', // Optional
+        item_category: 'Apparel', // Optional
+        item_category2: 'T-Shirts', // Optional subcategories
+        item_variant: 'Blue', // Optional variant (e.g., color, size)
+        index: 1 // Position in the list
+      }
+    ]
+  });
+
+  gtag('event', 'add_to_cart', {
+    currency: 'USD',
+    value: 15.99, // Total value of items added
+    items: [
+      {
+        item_id: '12345',
+        item_name: 'T-Shirt',
+        currency: 'USD',
+        price: 15.99,
+        quantity: 1,
+        item_brand: 'Brand A',
+        item_category: 'Apparel',
+        item_variant: 'Blue'
+      }
+    ]
+  });
+
+  gtag('event', 'remove_from_cart', {
+    currency: 'USD',
+    value: 15.99, // Total value of items added
+    items: [
+      {
+        item_id: '12345',
+        item_name: 'T-Shirt',
+        currency: 'USD',
+        price: 15.99,
+        quantity: 1,
+        item_brand: 'Brand A',
+        item_category: 'Apparel',
+        item_variant: 'Blue'
+      }
+    ]
+  });
+
+  gtag('event', 'begin_checkout', {
+    currency: 'USD',
+    value: 120.00, // Total value of the cart
+    items: [
+      {
+        item_id: '12345',
+        item_name: 'T-Shirt',
+        currency: 'USD',
+        price: 15.99,
+        quantity: 2,
+        item_brand: 'Brand A',
+        item_category: 'Apparel',
+        item_variant: 'Blue'
+      },
+      {
+        item_id: '67890',
+        item_name: 'Sneakers',
+        currency: 'USD',
+        price: 49.99,
+        quantity: 1,
+        item_brand: 'Brand B',
+        item_category: 'Footwear',
+        item_variant: 'Red'
+      }
+    ]
+  });
+
+  gtag('event', 'add_shipping_info', {
+    currency: 'USD',
+    value: 120.00, // Total value of the cart
+    shipping_tier: 'Express Shipping', // Selected shipping method
+    items: [
+      {
+        item_id: '12345',
+        item_name: 'T-Shirt',
+        currency: 'USD',
+        price: 15.99,
+        quantity: 2,
+        item_brand: 'Brand A',
+        item_category: 'Apparel',
+        item_variant: 'Blue'
+      },
+      {
+        item_id: '67890',
+        item_name: 'Sneakers',
+        currency: 'USD',
+        price: 49.99,
+        quantity: 1,
+        item_brand: 'Brand B',
+        item_category: 'Footwear',
+        item_variant: 'Red'
+      }
+    ]
+  });
+
+  gtag('event', 'add_payment_info', {
+    currency: 'USD',
+    value: 120.00, // Total value of the cart
+    payment_type: 'Credit Card', // Selected payment method
+    items: [
+      {
+        item_id: '12345',
+        item_name: 'T-Shirt',
+        currency: 'USD',
+        price: 15.99,
+        quantity: 2,
+        item_brand: 'Brand A',
+        item_category: 'Apparel',
+        item_variant: 'Blue'
+      },
+      {
+        item_id: '67890',
+        item_name: 'Sneakers',
+        currency: 'USD',
+        price: 49.99,
+        quantity: 1,
+        item_brand: 'Brand B',
+        item_category: 'Footwear',
+        item_variant: 'Red'
+      }
+    ]
+  });
+
+  gtag('event', 'purchase', {
+    transaction_id: 'T12345', // Unique transaction ID
+    affiliation: 'Online Store', // Optional: Store or affiliate name
+    currency: 'USD',
+    value: 120.00, // Total transaction value
+    tax: 10.00, // Tax value
+    shipping: 5.00, // Shipping cost
+    coupon: 'SUMMER2024', // Optional: Applied coupon code
+    items: [
+      {
+        item_id: '12345',
+        item_name: 'T-Shirt',
+        currency: 'USD',
+        price: 15.99,
+        quantity: 2,
+        item_brand: 'Brand A',
+        item_category: 'Apparel',
+        item_variant: 'Blue'
+      },
+      {
+        item_id: '67890',
+        item_name: 'Sneakers',
+        currency: 'USD',
+        price: 49.99,
+        quantity: 1,
+        item_brand: 'Brand B',
+        item_category: 'Footwear',
+        item_variant: 'Red'
+      }
+    ]
+  });
+
+  gtag('event', 'refund', {
+    transaction_id: 'T12345', // Unique transaction ID of the refunded order
+    currency: 'USD',
+    value: 65.98, // Total refund value
+    items: [
+      {
+        item_id: '12345',
+        item_name: 'T-Shirt',
+        currency: 'USD',
+        price: 15.99,
+        quantity: 2,
+        item_brand: 'Brand A',
+        item_category: 'Apparel',
+        item_variant: 'Blue'
+      }
+    ]
+  });
