@@ -1,0 +1,74 @@
+class btn-link
+id cta-button-find-a-retailer-3
+
+
+ btn btn-secondary-invert
+
+
+ ^gtm.click|callback_gtm.click|gtm.linkClick|callback_gtm.linkClick$
+
+
+ case
+when CONTAINS_TEXT(Link text,"sold out") then "Sold Out"
+when CONTAINS_TEXT(Link text,"login") then "Login"
+when CONTAINS_TEXT(Link text,"logout") then "Logout"
+when CONTAINS_TEXT(Link text,"continue as guest") then "Continue as Guest"
+when CONTAINS_TEXT(Link text,"find a retailer") then "Find Retailer"
+when CONTAINS_TEXT(Link text,"out of stock") then "Out of Stock"
+when CONTAINS_TEXT(Link text,"add to cart") then "Add to Cart"
+else "Other"
+end
+
+
+login / continue as guest
+checkout
+logout
+
+
+REGEXP_REPLACE(Hostname, "www.", "")
+
+case
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"amazon") then "Amazon"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"costco") then "Costco"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"johnlewis") then "JohnLewis"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"mediamarkt") then "MediaMarkt"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"fnac") then "Fnac" 
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"spotify") then "Spotify" 
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"coolblue") then "Coolblue"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"expert") then "Expert"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"argos") then "Argos"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"philips") then "Philips"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"bol.com") then "bol.com"
+when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),REGEXP_REPLACE(Hostname, "www.", "")) then REGEXP_REPLACE(CONCAT(UPPER(SUBSTR(REGEXP_REPLACE(Hostname, "www.", ""), 1, 1)), LOWER(SUBSTR(REGEXP_REPLACE(Hostname, "www.", ""), 2, LENGTH(REGEXP_REPLACE(Hostname, "www.", "")) - 1))), ".com", "")
+else "Other"
+end
+
+REGEXP_REPLACE(CONCAT(UPPER(SUBSTR(REGEXP_REPLACE(Hostname, "www.", ""), 1, 1)), LOWER(SUBSTR(REGEXP_REPLACE(Hostname, "www.", ""), 2, LENGTH(REGEXP_REPLACE(Hostname, "www.", "")) - 1))), ".com", "")
+
+
+case
+when CONTAINS_TEXT(Link text,"sold out") then "Sold Out"
+when CONTAINS_TEXT(Link text,"login") then "Login"
+when CONTAINS_TEXT(Link text,"logout") then "Logout"
+when CONTAINS_TEXT(Link text,"continue as guest") then "Continue as Guest"
+when CONTAINS_TEXT(Link text,"find a retailer") then "Find Retailer"
+when CONTAINS_TEXT(Link text,"out of stock") then "Out of Stock"
+when CONTAINS_TEXT(Link text,"add to cart") then "Add to Cart"
+
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"amazon") then "Find Retailer - Amazon"
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"costco") then "Find Retailer - Costco"
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"johnlewis") then "Find Retailer - JohnLewis"
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"mediamarkt") then "Find Retailer - MediaMarkt"
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"fnac") then "Find Retailer - Fnac" 
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"spotify") then "Find Retailer - Spotify" 
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"coolblue") then "Find Retailer - Coolblue"
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"expert") then "Find Retailer - Expert"
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"argos") then "Find Retailer - Argos"
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"philips") then "Find Retailer - Philips"
+    when CONTAINS_TEXT(REGEXP_REPLACE(REGEXP_EXTRACT(Link URL, "^https?://([^/]+)"), "www.", ""),"bol.com") then "Find Retailer - bol.com"
+
+else "Other"
+end
+
+
+CTA Type - From Link v2
