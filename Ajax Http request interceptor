@@ -1,0 +1,45 @@
+<script>
+(function() {
+	var xhrOpen = window.XMLHttpRequest.prototype.open;
+	var xhrSend = window.XMLHttpRequest.prototype.send;
+	window.XMLHttpRequest.prototype.open = function() {
+		this.method = arguments[0];
+		this.url = arguments[1];
+		return xhrOpen.apply(this, [].slice.call(arguments));
+	};
+	window.XMLHttpRequest.prototype.send = function() {
+		var xhr = this;
+		var xhrData = arguments[0];
+		var intervalId = window.setInterval(function() {
+			if(xhr.readyState != 4) {
+				return;
+			}
+          
+          // Exlude contains  google-analytics.com
+          
+          if(xhr.responseURL && /^https:\/\/((rs.fullstory|ct.pinterest|atr.veritonicmetrics|siteassets.bluecore|www.paypal).com|api.userway.org|(rum-collector-2.pingdom).net|.*(wistia.com|klaviyo|google-analytics|doubleclick))/i.test(xhr.responseURL) === false){
+            dataLayer.push({
+				'event': 'ajax',
+				'response_url': xhr.responseURL,
+                'response_data' :    xhr.method == 'POST' && xhrData ? xhrData : undefined,
+                'response_xhr': xhr         
+			});
+            
+          }
+          
+          
+
+         /* 
+			dataLayer.push({
+				'event': 'ajaxSuccess',
+				'eventCategory': 'AJAX ' + xhr.method,
+				'eventAction': xhr.url + (xhr.method == 'POST' && xhrData ? ';' + xhrData : ''),
+				'eventLabel': xhr.responseText
+			});
+		*/
+        clearInterval(intervalId);
+		}, 1);
+		return xhrSend.apply(this, [].slice.call(arguments));
+	};
+})();
+</script>
